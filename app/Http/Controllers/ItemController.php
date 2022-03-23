@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Service;
+use App\Models\ClothesType;
 use Illuminate\Http\Request;
 use App\Http\Repository\LanguageRepository;
 use App\Http\Services\UploaderService;
 use Illuminate\Http\UploadedFile;
 use Validator;
 
-class ServiceController extends Controller
+class ItemController extends Controller
 {
    /**
      * @var IMAGE_PATH
      */
-    const IMAGE_PATH = 'services';
+    const IMAGE_PATH = 'items';
     /**
      * @var UploaderService
      */
@@ -35,9 +37,9 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $services = Service::latest()->get();
+        $items = Item::latest()->get();
         $languages = $this->languageRepository->all();
-        return view('service.index', compact('services', 'languages'));
+        return view('item.index', compact('items', 'languages'));
     }
 
     /**
@@ -47,10 +49,12 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $service = null;
+        $item = null;
+        $services = Service::latest()->get();
+        $clothes_types = ClothesType::latest()->get();
         $languages = $this->languageRepository->all();
 
-        return view('service.form', compact('service', 'languages'));
+        return view('item.form', compact('item', 'services', 'clothes_types', 'languages'));
     }
 
     /**
@@ -65,6 +69,8 @@ class ServiceController extends Controller
             'name' => 'required|array',
             'name.*' => 'required|string',
             'description' => 'array',
+            'price' => 'required|numeric',
+            'service_id' => 'required',
             'image' => 'required'
         ]);
 
@@ -72,8 +78,8 @@ class ServiceController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $service = new Service();
-        $service->fill($request->except('name', 'description', 'ímage'));
+        $item = new Item();
+        $item->fill($request->except('name', 'description', 'ímage'));
 
         if ($request->image) {
             $imgExtensions = array("png", "jpeg", "jpg");
@@ -83,20 +89,20 @@ class ServiceController extends Controller
                 return back();
             }
 
-            $service->image = $this->handleFile($request['image']);
+            $item->image = $this->handleFile($request['image']);
         }
 
         foreach ($request->name as $key => $value) {
-            $service->setTranslation('name', $key, $value);
+            $item->setTranslation('name', $key, $value);
         }
     
         foreach ($request->description as $key => $value) {
-            $value!=null ? $service->setTranslation('description', $key, $value) : null;
+            $value!=null ? $item->setTranslation('description', $key, $value) : null;
         }
         
-        $service->save();
+        $item->save();
         \Session::flash('success', trans('messages.Added Successfully'));
-        return redirect('/service');
+        return redirect('/item');
     }
 
     /**
@@ -107,8 +113,8 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $service = Service::findOrFail($id);
-        return view('service.index', compact('service'));
+        $item = Item::findOrFail($id);
+        return view('item.index', compact('item'));
     }
 
     /**
@@ -119,9 +125,11 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $service = Service::findOrFail($id);
+        $item = Item::findOrFail($id);
+        $services = Service::latest()->get();
+        $clothes_types = ClothesType::latest()->get();
         $languages = $this->languageRepository->all();
-        return view('service.form', compact('service', 'languages'));
+        return view('item.form', compact('item', 'services', 'clothes_types', 'languages'));
     }
 
     /**
@@ -137,6 +145,7 @@ class ServiceController extends Controller
             'name' => 'required|array',
             'name.*' => 'required|string',
             'description' => 'array',
+            'price' => 'numeric',
             'image' => ''
         ]);
 
@@ -144,9 +153,9 @@ class ServiceController extends Controller
             return back()->withErrors($validator)->withInput();
         }
 
-        $service = Service::findOrFail($id);
+        $item = Item::findOrFail($id);
 
-        $service->fill($request->except('name', 'description', 'ímage'));
+        $item->fill($request->except('name', 'description', 'ímage'));
 
         if ($request->image) {
             $imgExtensions = array("png", "jpeg", "jpg");
@@ -156,25 +165,25 @@ class ServiceController extends Controller
                 return back();
             }
 
-            if ($service->image) {
-                $this->delete_image_if_exists(base_path('/uploads/services/' . basename($service->image)));
+            if ($item->image) {
+                $this->delete_image_if_exists(base_path('/uploads/items/' . basename($item->image)));
             }
 
-            $service->image = $this->handleFile($request['image']);
+            $item->image = $this->handleFile($request['image']);
         }
 
         foreach ($request->name as $key => $value) {
-            $service->setTranslation('name', $key, $value);
+            $item->setTranslation('name', $key, $value);
         }
     
         foreach ($request->description as $key => $value) {
-            $value!=null ? $service->setTranslation('description', $key, $value) : null;
+            $value!=null ? $item->setTranslation('description', $key, $value) : null;
         }
         
-        $service->save();
+        $item->save();
 
         \Session::flash('success', trans('messages.updated successfully'));
-        return redirect('/service');
+        return redirect('/item');
     }
 
     /**
@@ -185,8 +194,8 @@ class ServiceController extends Controller
      */
     public function destroy($id)
     {
-        $service = Service::find($id);
-        $service->delete();
+        $item = Item::find($id);
+        $item->delete();
 
         return redirect()->back();
     }
@@ -200,11 +209,4 @@ class ServiceController extends Controller
     {
         return $this->uploaderService->upload($file, self::IMAGE_PATH);
     } 
-
-    public function clothesTypes(Request $request){
-        $service = Service::find($request->service_id);
-        $clothes_types = $service->clothesTypes()->get();
-
-        return view('partial.clothes_types', compact('clothes_types'))->render();
-    }
 }

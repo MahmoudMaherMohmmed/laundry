@@ -355,6 +355,7 @@ return [
     'services'=>[
         'services' => 'Services',
         'create_service' => 'Add New Service',
+        'price' => 'Price',
     ],
 
     'cities'=>[
@@ -381,5 +382,10 @@ return [
     'clothes_types'=>[
         'clothes_types' =>'Clothes Type',
         'create_clothes_type' => 'New Clothes Type',
+    ],
+
+    'items'=>[
+        'items' => 'Items',
+        'create_item' => 'Add New Item',
     ],
 ];

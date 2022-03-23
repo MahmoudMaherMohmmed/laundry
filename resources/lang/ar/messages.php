@@ -352,6 +352,7 @@ return [
     'services'=>[
         'services' => 'الخدمات',
         'create_service' => 'اضافة خدمة جديد',
+        'price' => 'سعر الوحدة'
     ],
 
     'cities'=>[
@@ -378,5 +379,10 @@ return [
     'clothes_types'=>[
         'clothes_types' => 'أنواع الملابس',
         'create_clothes_type' => 'اضافة نوع ملابس جديد ',
+    ],
+
+    'items'=>[
+        'items' => 'العناصر',
+        'create_item' => 'اضافة عنصر جديد ',
     ],
 ];

@@ -320,6 +320,21 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                     </ul>
 
                     <ul class="nav nav-list">
+                        <li id="item">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-building"></i>
+                                <span>@lang('messages.items.items')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li id="item_index"><a href="{{url('item')}}">@lang('messages.items.items')</a></li>
+                                <li id="item_create"><a href="{{url('item/create')}}">@lang('messages.items.create_item')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <ul class="nav nav-list">
                         <li id="reservation">
                             <a href="#" class="dropdown-toggle">
                                 <i class="fa fa-tasks"></i>

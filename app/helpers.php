@@ -91,6 +91,7 @@ function get_static_routes()
 
         Route::Resource('client', 'ClientController');
         Route::Resource('service', 'ServiceController');
+        Route::get('services/clothes_types', 'ServiceController@clothesTypes');
         Route::Resource('center', 'CenterController');
         Route::Resource('term', 'TermController');
         Route::Resource('bank', 'BankController');
@@ -100,6 +101,7 @@ function get_static_routes()
         Route::Resource('city', 'CityController');
         Route::Resource('coupon', 'CouponController');
         Route::Resource('clothes_type', 'ClothesTypeController');
+        Route::Resource('item', 'ItemController');
     });
 
 
