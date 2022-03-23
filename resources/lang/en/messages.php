@@ -377,4 +377,9 @@ return [
         'oil' => 'Oil',
         'date' => 'Date',
     ],
+
+    'clothes_types'=>[
+        'clothes_types' =>'Clothes Type',
+        'create_clothes_type' => 'New Clothes Type',
+    ],
 ];

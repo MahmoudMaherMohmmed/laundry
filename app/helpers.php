@@ -99,6 +99,7 @@ function get_static_routes()
         Route::Resource('slider', 'SliderController');
         Route::Resource('city', 'CityController');
         Route::Resource('coupon', 'CouponController');
+        Route::Resource('clothes_type', 'ClothesTypeController');
     });
 
 

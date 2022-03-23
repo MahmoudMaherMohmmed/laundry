@@ -7,18 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 use App\Traits\Translatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Service extends Model
+class ClothesType extends Model
 {
     use HasFactory;
     use Translatable;  
     use SoftDeletes;
 
-    protected $table = 'services';
+    protected $table = 'clothes_types';
     protected $fillable = ['title', 'description', 'image'];
 
-    public function clothesTypes()
+    public function services()
     {
-        return $this->belongsToMany(ClothesType::class);
+        return $this->belongsToMany(Service::class);
     }
-
 }

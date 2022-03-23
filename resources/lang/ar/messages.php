@@ -374,4 +374,9 @@ return [
         'oil' => 'الزيوت',
         'date' => 'التاريخ',
     ],
+
+    'clothes_types'=>[
+        'clothes_types' => 'أنواع الملابس',
+        'create_clothes_type' => 'اضافة نوع ملابس جديد ',
+    ],
 ];
