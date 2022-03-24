@@ -16,7 +16,7 @@ class Item extends Model
     protected $table = 'items';
     protected $fillable = ['service_id', 'clothes_type_id', 'title', 'description', 'price', 'image'];
 
-    public function services()
+    public function service()
     {
         return $this->belongsTo(Service::class);
     }
@@ -24,5 +24,10 @@ class Item extends Model
     public function colthesType()
     {
         return $this->belongsTo(ClothesType::class);
+    }
+
+    public function cartItems()
+    {
+      return $this->hasMany(Cart::class);
     }
 }

@@ -24,4 +24,8 @@ return [
     'reservation_not_found' => 'This reservation is not available in our system.',
     'appointment_reschedule' => 'appointment rescheduled successfully.',
     'service_price' => 'Service price',
+    'cart_item_added_successfully' => 'Cart Item Added Successfully.',
+    'cart_item_updated_successfully' => 'Cart Item Updated Successfully.',
+    'cart_item_deleted_successfully' => 'Cart Item deleted successfully.',
+    'cart_item_is_not_found' => 'Cart Item is not found.',
 ];

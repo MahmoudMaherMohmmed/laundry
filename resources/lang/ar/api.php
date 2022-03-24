@@ -24,4 +24,8 @@ return [
     'reservation_not_found' => 'هذاالحجز غير موجود فى النظام لدينا',
     'appointment_reschedule' => 'تم تعديل موعد الحجز بنجاح',
     'service_price' => 'سعر الخدمة',
+    'cart_item_added_successfully' => 'تم أضافة الوحدة الى السلة بنجاح',
+    'cart_item_updated_successfully' => 'تم تعديل الوحدة بنجاح',
+    'cart_item_deleted_successfully' => 'تم حذف العنصر بنجاح',
+    'cart_item_is_not_found' => 'هذا العنصر غير موجود',
 ];

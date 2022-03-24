@@ -67,4 +67,9 @@ class Client extends Authenticatable
     {
         return $this->hasMany(Notification::class);
     }
+
+    public function cartItems()
+    {
+      return $this->hasMany(Cart::class);
+    }
 }

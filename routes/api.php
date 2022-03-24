@@ -42,5 +42,9 @@ Route::middleware('localization')->group(function () {
         Route::post('logout', 'Api\ClientController@logout');
         Route::get('notifications', 'Api\NotificationController@index');
         Route::post('notification/delete', 'Api\NotificationController@delete');
+        Route::get('cart/items', 'Api\CartController@index');
+        Route::post('cart/item/add', 'Api\CartController@store');
+        Route::post('cart/item/{id}/edit', 'Api\CartController@edit');
+        Route::post('cart/item/delete', 'Api\CartController@delete');
     });
 });
