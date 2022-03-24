@@ -31,6 +31,8 @@ Route::middleware('localization')->group(function () {
 
     //-------------------------------------------------------
     Route::get('services', 'Api\ServiceController@index');
+    Route::get('clothes_type/{service_id}', 'Api\ClothesTypeController@index');
+    Route::get('items/{service_id}/{clothes_type_id}', 'Api\ItemController@index');
     Route::post('coupon/apply', 'Api\ServiceController@applyCoupon');
 
     Route::middleware('auth:api')->group(function () {

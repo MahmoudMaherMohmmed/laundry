@@ -15,4 +15,14 @@ class Item extends Model
 
     protected $table = 'items';
     protected $fillable = ['service_id', 'clothes_type_id', 'title', 'description', 'price', 'image'];
+
+    public function services()
+    {
+        return $this->belongsTo(Service::class);
+    }
+
+    public function colthesType()
+    {
+        return $this->belongsTo(ClothesType::class);
+    }
 }

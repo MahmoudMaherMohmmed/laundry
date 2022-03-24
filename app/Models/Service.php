@@ -21,4 +21,9 @@ class Service extends Model
         return $this->belongsToMany(ClothesType::class);
     }
 
+    public function items()
+    {
+      return $this->hasMany(Item::class);
+    }
+
 }
