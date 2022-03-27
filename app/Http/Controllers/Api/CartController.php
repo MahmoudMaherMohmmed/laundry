@@ -26,7 +26,7 @@ class CartController extends Controller
             $service = $item->service()->first();
 
             if( !isset($service_array[$service->getTranslation('name', $lang)]) ){
-                $service_array[$service->getTranslation('name', $lang)] = [];
+                $service_array[$service->getTranslation('name', $lang)] = ['count'=>0, 'clothes'=>[]];
             }
 
             $item_array = [
@@ -37,7 +37,7 @@ class CartController extends Controller
                 'image' => url($item->image),
             ];
 
-            array_push($service_array[$service->getTranslation('name', $lang)], $item_array);
+            array_push($service_array[$service->getTranslation('name', $lang)]['clothes'], $item_array);
         }
 
         return $service_array;
