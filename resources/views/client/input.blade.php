@@ -2,7 +2,7 @@
 <div class="form-group">
     <label class="col-sm-3 col-lg-2 control-label">@lang('messages.name') *</label>
     <div class="col-sm-9 col-lg-10 controls">
-        <input type="text" name="name" placeholder="@lang('messages.name')" class="form-control input-lg"
+        <input type="text" name="username" placeholder="@lang('messages.name')" class="form-control input-lg"
             required value="{{ $client->username ?? old('username') }}">
     </div>
 </div>

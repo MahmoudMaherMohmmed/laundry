@@ -62,7 +62,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name'      => 'required|min:3',
+            'username'      => 'required|min:3',
             'email'     => 'required|email|unique:clients',
             'password'  => 'required|confirmed|min:6',
             'phone'     => 'required|unique:clients',
@@ -128,7 +128,7 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         $validator = Validator::make($request->all(), [
-            'name'      => 'required|min:3',
+            'username'      => 'required|min:3',
             'email'     => 'required|email|unique:clients',
             'phone'     => 'required|unique:clients',
             'image' => ''
