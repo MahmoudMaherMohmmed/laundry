@@ -37,7 +37,7 @@ class CartController extends Controller
                 'image' => url($item->image),
             ];
 
-            array_push($service_array[$service->getTranslation('name', $lang)], $item_array);
+            array_push($service_array[$service->getTranslation('name', $lang)][], $item_array);
         }
 
         return $service_array;
