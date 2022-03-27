@@ -24,7 +24,6 @@ class CartController extends Controller
         foreach($cart as $cart_item){
             $item = Item::where('id', $cart_item->item_id)->first();
             $service = $item->service()->first();
-            dd($service);
 
             if( count($service_array[$service->getTranslation('name', $lang)]) > 0 ){
                 array_push([$service->getTranslation('name', $lang) => []], $service_array);
