@@ -26,7 +26,7 @@ class CartController extends Controller
             $service = $item->service()->first();
 
             if( !in_array($service->getTranslation('name', $lang), $service_array) ){
-                array_push($service->getTranslation('name', $lang), $service_array);
+                array_push($service_array, $service->getTranslation('name', $lang));
             }
             dd($service_array);
 
