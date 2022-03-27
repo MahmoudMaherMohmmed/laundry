@@ -25,8 +25,8 @@ class CartController extends Controller
             $item = Item::where('id', $cart_item->item_id)->first();
             $service = $item->service()->first();
 
-            if( !in_array($service->getTranslation('name', $lang), $service_array) ){
-                array_push($service_array, [$service->getTranslation('name', $lang) => []]);
+            if( !isset($service_array[$service->getTranslation('name', $lang)]) ){
+                $service_array[$service->getTranslation('name', $lang)] = [];
             }
 
             $item_array = [
@@ -36,9 +36,8 @@ class CartController extends Controller
                 'price' => $item->price,
                 'image' => url($item->image),
             ];
-            dd($service_array);
 
-            array_push($service_array[$service->getTranslation('name', $lang)][], $item_array);
+            array_push($service_array[$service->getTranslation('name', $lang)], $item_array);
         }
 
         return $service_array;
