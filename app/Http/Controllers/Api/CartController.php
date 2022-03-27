@@ -28,7 +28,6 @@ class CartController extends Controller
             if( !in_array($service->getTranslation('name', $lang), $service_array) ){
                 array_push($service_array, $service->getTranslation('name', $lang));
             }
-            dd($service_array);
 
             $item_array = [
                 'id' => $item->id,
