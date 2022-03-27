@@ -38,6 +38,7 @@ class CartController extends Controller
             ];
 
             array_push($service_array[$service->getTranslation('name', $lang)]['clothes'], $item_array);
+            $service_array[$service->getTranslation('name', $lang)]['count'] = $service_array[$service->getTranslation('name', $lang)]['count'] + 1;
         }
 
         return $service_array;
