@@ -26,21 +26,21 @@ class CartController extends Controller
             $service = $item->service()->first();
             dd($service);
 
-            // if( isset($service_array[$service->getTranslation('name', $lang)]) ){
-            //     array_push([$service->getTranslation('name', $lang) => []], $service_array);
-            // }else{
-            //     $service_array = [$service->getTranslation('name', $lang) => []]; 
-            // }
+            if( count($service_array[$service->getTranslation('name', $lang)]) > 0 ){
+                array_push([$service->getTranslation('name', $lang) => []], $service_array);
+            }else{
+                $service_array = [$service->getTranslation('name', $lang) => []]; 
+            }
 
-            // $item_array = [
-            //     'id' => $item->id,
-            //     'name' => $item->getTranslation('name', $lang),
-            //     'description' => $item->getTranslation('description', $lang),
-            //     'price' => $item->price,
-            //     'image' => url($item->image),
-            // ];
+            $item_array = [
+                'id' => $item->id,
+                'name' => $item->getTranslation('name', $lang),
+                'description' => $item->getTranslation('description', $lang),
+                'price' => $item->price,
+                'image' => url($item->image),
+            ];
 
-            // array_push($service_array[$service->getTranslation('name', $lang)], $item_array);
+            array_push($service_array[$service->getTranslation('name', $lang)], $item_array);
         }
 
         return $service_array;
