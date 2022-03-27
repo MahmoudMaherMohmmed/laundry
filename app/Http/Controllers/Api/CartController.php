@@ -26,9 +26,9 @@ class CartController extends Controller
             $service = $item->service()->first();
 
             if( $service_array[$service->getTranslation('name', $lang)]!=null && count($service_array[$service->getTranslation('name', $lang)]) > 0 ){
-                array_push([$service->getTranslation('name', $lang) => []], $service_array);
+                array_push($service->getTranslation('name', $lang), $service_array);
             }else{
-                $service_array = [$service->getTranslation('name', $lang) => []]; 
+                $service_array = $service->getTranslation('name', $lang); 
             }
 
             $item_array = [
