@@ -25,11 +25,10 @@ class CartController extends Controller
             $item = Item::where('id', $cart_item->item_id)->first();
             $service = $item->service()->first();
 
-            if(count($service_array[$service->getTranslation('name', $lang)]) > 0 ){
+            if( !in_array($service->getTranslation('name', $lang), $service_array) ){
                 array_push($service->getTranslation('name', $lang), $service_array);
-            }else{
-                $service_array = $service->getTranslation('name', $lang); 
             }
+            dd($service_array);
 
             $item_array = [
                 'id' => $item->id,
