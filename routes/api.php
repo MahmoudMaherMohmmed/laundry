@@ -46,5 +46,9 @@ Route::middleware('localization')->group(function () {
         Route::post('cart/item/add', 'Api\CartController@store');
         Route::post('cart/item/{id}/edit', 'Api\CartController@edit');
         Route::post('cart/item/delete', 'Api\CartController@delete');
+        Route::get('cards', 'Api\CardController@index');
+        Route::post('card/add', 'Api\CardController@store');
+        Route::post('card/{id}/edit', 'Api\CardController@edit');
+        Route::post('card/{id}/delete', 'Api\CardController@delete');
     });
 });
