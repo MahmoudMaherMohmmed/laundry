@@ -388,4 +388,13 @@ return [
         'items' => 'Items',
         'create_item' => 'Add New Item',
     ],
+
+    'cards'=>[
+        'cards' => 'Cards',
+        'create_card' => 'Add New Card',
+        'card_holder_name' => 'CardHolder\'s Name',
+        'card_number' => 'Card Number',
+        'expiry_date' => 'Expiry Date',
+        'cvv' => 'CVV',
+    ],
 ];

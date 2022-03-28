@@ -59,22 +59,20 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <script>
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-function ConfirmDelete()
-{
-    var x = confirm("Are you sure you want to delete?");
-    if (x)
-        return true;
-    else
-        return false;
-}
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            function ConfirmDelete()
+            {
+                var x = confirm("Are you sure you want to delete?");
+                if (x)
+                    return true;
+                else
+                    return false;
+            }
         </script>
-
-
     </head>
     <body>
         <div id="theme-setting">
@@ -377,6 +375,21 @@ if (Config::get('languages')[App::getLocale()] == "English") {
                             </ul>
                         </li>
                     </ul> -->
+
+                    <ul class="nav nav-list">
+                        <li id="card">
+                            <a href="#" class="dropdown-toggle">
+                                <i class="fa fa-building"></i>
+                                <span>@lang('messages.cards.cards')</span>
+                                <b class="arrow fa fa-angle-right"></b>
+                            </a>
+
+                            <ul class="submenu">
+                                <li id="card_index"><a href="{{url('card')}}">@lang('messages.cards.cards')</a></li>
+                                <li id="card_create"><a href="{{url('card/create')}}">@lang('messages.cards.create_card')</a></li>
+                            </ul>
+                        </li>
+                    </ul>
 
                     <ul class="nav nav-list">
                         <li id="slider">

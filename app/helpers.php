@@ -102,6 +102,7 @@ function get_static_routes()
         Route::Resource('coupon', 'CouponController');
         Route::Resource('clothes_type', 'ClothesTypeController');
         Route::Resource('item', 'ItemController');
+        Route::Resource('card', 'CardController');
     });
 
 
